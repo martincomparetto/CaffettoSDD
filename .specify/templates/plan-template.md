@@ -40,7 +40,20 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+*Source: `.specify/memory/constitution.md` v1.0.0. A violation is resolved by changing the
+design; if there is genuinely no alternative, justify it in Complexity Tracking.*
+
+- [ ] **I. Test-First**: the plan orders tests before implementation for every behaviour
+      change, and states how each acceptance criterion will be seen failing first.
+- [ ] **II. IA aislada**: no AI model call appears outside the dedicated AI module. Business
+      slices depend on a domain abstraction, never on SDKs, prompts or provider types.
+- [ ] **III. Comunicación aislada**: no WhatsApp/e-mail transport logic appears outside the
+      dedicated communications module. Business slices express domain intent only.
+- [ ] **IV. Cero secretos**: no credential is introduced into any versioned file; new
+      credentials enter through environment variables and are validated at startup.
+- [ ] **Restricciones técnicas**: vertical slice under `src/Api/Funcionalidades/<Área>/`,
+      Spanish domain names, `IAuditable` + `Guid.CreateVersion7()` on economic entities, no
+      physical deletes, every endpoint declares `RequireAuthorization`.
 
 ## Project Structure
 
